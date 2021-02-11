@@ -10,27 +10,33 @@ import java.util.concurrent.ThreadLocalRandom;
 @Controller
 public class DiceController {
 
-    @GetMapping("roll-dice/{guess}")
-    public String rollDice(@PathVariable int guess, Model model) {
+    @GetMapping("/roll-dice")
+    public String showRollDice(){
+        return "roll-dice";
+    }
+    @GetMapping("/roll-dice/{guess}")
+    public String rollDice(@PathVariable int guess, Model model){
         String message;
-        int randomNumber = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+//		https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 6 + 1);
 
-        if(guess == randomNumber){
+        if(guess == randomNum){
             message = "Yay, you guessed correctly!";
         } else {
             message = "Sorry, try again!";
         }
 
-        model.addAttribute("randomNumber", randomNumber);
+        model.addAttribute("randomNumber", randomNum);
         model.addAttribute("guess", guess);
         model.addAttribute("message", message);
 
         return "roll-results";
 
+
     }
 
-    @GetMapping("roll-dice")
-    public String showRollDice(){
-        return "roll-dice";
-    }
+//    @GetMapping("roll-dice")
+//    public String showRollDice(){
+//        return "roll-dice";
+//    }
 }
