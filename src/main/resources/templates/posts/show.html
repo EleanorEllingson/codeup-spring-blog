@@ -8,9 +8,11 @@
 <h2 th:text="${post.title}"></h2>
 <p th:text="${post.body}"></p>
 
-<form action="/posts/delete" method="post">
-<input type="hidden" name="post_id" value="${post.id}">
-<input class="btn btn-danger btn-sm" type="submit" value="Delete">
+
+<a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit Post</a>
+<form th:action="@{'/posts/' + ${post.id} + '/delete'}" th:method="post">
+<!--    <input type="hidden" name="post_id" value="${post.id}">-->
+    <input class="btn btn-danger btn-sm" type="submit" value="Delete">
 </form>
 
 <div th:replace="partials/scripts :: assets"></div>
