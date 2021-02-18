@@ -3,7 +3,7 @@
 <head th:replace="partials/head :: header-links"></head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-
+<div class="posts">
 <!-- This is where we iterate through the Posts ArrayList -->
 <h1>Here are all the posts!</h1>
 
@@ -12,7 +12,7 @@
     <p th:text="${post.body}"></p>
 
 </div>
-
+</div>
 
 <div th:replace="partials/scripts :: assets"></div>
 </body>
