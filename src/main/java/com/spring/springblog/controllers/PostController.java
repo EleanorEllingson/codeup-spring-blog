@@ -40,6 +40,10 @@ public class PostController {
 
         model.addAttribute("post", post);
 
+        User user = userDao.getOne(1L);
+
+        model.addAttribute("user", user);
+
         return "posts/show";
     }
 
@@ -78,7 +82,7 @@ public class PostController {
         post.setTitle(title);
         post.setBody(body);
 
-        // Will throw if no users in the db!
+
         User user = userDao.findAll().get(0);
         post.setUser(user);
 
