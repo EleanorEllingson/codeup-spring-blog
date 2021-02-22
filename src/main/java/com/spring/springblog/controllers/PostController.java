@@ -1,14 +1,12 @@
 package com.spring.springblog.controllers;
 
 import com.spring.springblog.models.Post;
+import com.spring.springblog.models.User;
 import com.spring.springblog.repositories.PostRepository;
 import com.spring.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -66,6 +64,26 @@ public class PostController {
 //        post.setAuthor(user);
         postsDao.save(post);
         return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/create")
+    public String postForm(Model model){
+        model.addAttribute("post", new Post());
+        return "posts/create";
+    }
+
+    @PostMapping("/posts/create")
+    public String createPost(@RequestParam String title, @RequestParam String body) {
+        Post post = new Post();
+        post.setTitle(title);
+        post.setBody(body);
+
+        // Will throw if no users in the db!
+        User user = userDao.findAll().get(0);
+        post.setUser(user);
+
+        postsDao.save(post);
+        return "redirect:/posts/" + post.getId();
     }
 
 //    @PostMapping("/posts/update")

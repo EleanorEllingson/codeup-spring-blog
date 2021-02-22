@@ -7,7 +7,8 @@ import java.util.List;
 @Table(name = "posts")
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT(11) UNSIGNED")
     private long id;
 
     @Column(nullable = false)
@@ -17,9 +18,7 @@ public class Post {
         private String body;
 
     @ManyToOne
-    private User username;
-
-
+    private User user;
 
 
     public Post() {
@@ -53,5 +52,9 @@ public class Post {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

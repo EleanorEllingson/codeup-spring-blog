@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false)
@@ -20,7 +20,7 @@ public class User {
     private String password;
 
 
-    @OneToMany(mappedBy = "username")
+    @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
     public User(long id, String username, String email, String password, List<Post> posts) {
