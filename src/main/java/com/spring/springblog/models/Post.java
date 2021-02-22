@@ -1,12 +1,13 @@
 package com.spring.springblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false)
@@ -14,6 +15,11 @@ public class Post {
 
     @Column(nullable = false)
         private String body;
+
+    @ManyToOne
+    private User username;
+
+
 
 
     public Post() {

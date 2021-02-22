@@ -50,3 +50,4 @@ insert into posts (title, body) values ('vulputate luctus cum sociis', 'Implanta
 insert into posts (title, body) values ('volutpat dui maecenas tristique', 'Other repair of knee');
 insert into posts (title, body) values ('dolor sit amet', 'Internal fixation of bone without fracture reduction, carpals and metacarpals');
 insert into posts (title, body) values ('id justo', 'Total excision of pineal gland');
+insert into users (email, password, username) values ('user.email.com', 'userpassword', 'user')
