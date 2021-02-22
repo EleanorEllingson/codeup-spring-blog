@@ -13,6 +13,8 @@
 <p th:text="${post.body}"></p>
 
 
+
+
 <a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit Post</a>
 <form th:action="@{'/posts/' + ${post.id} + '/delete'}" th:method="post">
 <!--    <input type="hidden" name="post_id" value="${post.id}">-->
