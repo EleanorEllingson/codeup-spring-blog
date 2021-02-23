@@ -1,12 +1,14 @@
 package com.spring.springblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT(11) UNSIGNED")
     private long id;
 
     @Column(nullable = false)
@@ -14,6 +16,11 @@ public class Post {
 
     @Column(nullable = false)
         private String body;
+
+    @ManyToOne
+    @JoinColumn (name = "username_id")
+    private User user;
+
 
 
     public Post() {
@@ -48,4 +55,16 @@ public class Post {
     public void setId(long id) {
         this.id = id;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+    }
+
+
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }
