@@ -23,3 +23,7 @@ body {
 .navbar{
     background: blue;
 }
+
+img.card-img-top {
+    width: 25%;
+}
