@@ -83,11 +83,11 @@ public class PostController {
 //        post.setBody(body);
 //
 //
-//        User user = userDao.findAll().get(0);
-//        post.setUser(user);
+        User user = userDao.findAll().get(0);
+        post.setUser(user);
 
         postsDao.save(post);
-        return "redirect:/posts/" + post.getId();
+        return "redirect:/posts";
     }
 
 //    @PostMapping("/posts/update")

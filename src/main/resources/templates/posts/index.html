@@ -4,14 +4,23 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <div class="posts">
-<!-- This is where we iterate through the Posts ArrayList -->
-<h1>Here are all the posts!</h1>
+    <div class="container">
+        <div class="row">
+                <div class="card col d-flex justify-content-center" style="width: 29rem;" >
 
-<div th:each="post : ${posts}">
-    <a th:text="${post.title}" th:href="@{|/posts/${post.id}|}"></a>
-    <p th:text="${post.body}"></p>
+                    <div class="card-body">
+                        <div th:each="post : ${posts}">
+                            <img src="..." class="card-img-top" alt="...">
+                            <a th:text="${post.title}" th:href="@{|/posts/${post.id}|}"></a>
+                            <p th:text="${post.body}"></p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
 
-</div>
+
 </div>
 
 <div th:replace="partials/scripts :: assets"></div>
