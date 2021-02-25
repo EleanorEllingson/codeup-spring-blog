@@ -17,6 +17,9 @@ public class Post {
     @Column(nullable = false)
         private String body;
 
+    @Column
+        private String uploadedFilePath;
+
     @ManyToOne
     @JoinColumn (name = "username_id")
     private User user;
@@ -26,10 +29,20 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String body, long id) {
+    public String getUploadedFilePath() {
+        return uploadedFilePath;
+    }
+
+    public void setUploadedFilePath(String uploadedFilePath) {
+        this.uploadedFilePath = uploadedFilePath;
+    }
+
+    public Post(String title, String body, long id, String uploadedFilePath) {
         this.title = title;
         this.body = body;
+        this.uploadedFilePath = uploadedFilePath;
         this.id = id;
+
     }
 
     public String getTitle() {
