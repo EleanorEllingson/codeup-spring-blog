@@ -1,6 +1,7 @@
 package com.spring.springblog.services;
 
 import com.spring.springblog.models.User;
+import com.spring.springblog.models.UserWithRoles;
 import com.spring.springblog.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
