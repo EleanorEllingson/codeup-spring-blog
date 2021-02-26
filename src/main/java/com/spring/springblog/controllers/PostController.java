@@ -48,7 +48,7 @@ public class PostController {
 
         model.addAttribute("post", post);
 
-        User user = userDao.getOne(1L);
+        User user = userDao.getOne(id);
 
         model.addAttribute("user", user);
 

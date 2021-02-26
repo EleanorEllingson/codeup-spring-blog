@@ -29,13 +29,13 @@ public class HomeController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login";
+        return "users/login";
     }
 
     @GetMapping("/sign-up")
     public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());
-        return "sign-up";
+        return "users/sign-up";
     }
 
     @PostMapping("/sign-up")
