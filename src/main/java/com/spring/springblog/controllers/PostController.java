@@ -78,18 +78,36 @@ public class PostController {
         return "redirect:/posts";
     }
 
+    @Value("${file-upload-path}")
+    private String uploadPath;
+
     @GetMapping("/posts/create")
     public String postForm(Model model){
         model.addAttribute("post", new Post());
+
 
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@ModelAttribute Post post) {
+    public String createPost(@ModelAttribute Post post,  @RequestParam(name = "file") MultipartFile uploadedFile,
+                             Model model) {
 
         User user = userDao.findAll().get(0);
         post.setUser(user);
+
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile);
+            model.addAttribute("message", "File successfully uploaded!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Oops! Something went wrong! " + e);
+        }
+
+
 
         Post savedPost = postsDao.save(post);
 
@@ -104,31 +122,31 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @Value("${file-upload-path}")
-    private String uploadPath;
-
-    @GetMapping("/fileupload")
-    public String showUploadFileForm() {
-        return "fileupload";
-    }
-
-    @PostMapping("/fileupload")
-    public String saveFile(
-            @RequestParam(name = "file") MultipartFile uploadedFile,
-            Model model
-    ) {
-        String filename = uploadedFile.getOriginalFilename();
-        String filepath = Paths.get(uploadPath, filename).toString();
-        File destinationFile = new File(filepath);
-        try {
-            uploadedFile.transferTo(destinationFile);
-            model.addAttribute("message", "File successfully uploaded!");
-        } catch (IOException e) {
-            e.printStackTrace();
-            model.addAttribute("message", "Oops! Something went wrong! " + e);
-        }
-        return "posts/create";
-    }
+//    @Value("${file-upload-path}")
+//    private String uploadPath;
+//
+//    @GetMapping("/fileupload")
+//    public String showUploadFileForm() {
+//        return "fileupload";
+//    }
+//
+//    @PostMapping("/fileupload")
+//    public String saveFile(
+//            @RequestParam(name = "file") MultipartFile uploadedFile,
+//            Model model
+//    ) {
+//        String filename = uploadedFile.getOriginalFilename();
+//        String filepath = Paths.get(uploadPath, filename).toString();
+//        File destinationFile = new File(filepath);
+//        try {
+//            uploadedFile.transferTo(destinationFile);
+//            model.addAttribute("message", "File successfully uploaded!");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            model.addAttribute("message", "Oops! Something went wrong! " + e);
+//        }
+//        return "posts/create";
+//    }
 
 //    @PostMapping("/posts/update")
 
