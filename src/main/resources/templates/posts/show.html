@@ -17,7 +17,7 @@
 
                     <div class="card-body">
                         <h2 th:text="${post.title}"></h2>
-                        <img src="img/blueberries.jpg" class="card-img-top" style="width: 30rem" alt="...">
+                        <img th:src="@{${post.uploadedFilePath}}" class="card-img-top" style="width: 20rem" alt="...">
                         <p th:text="'Authored by ' + ${post.user.username}"></p>
                         <p th:text="${post.body}"></p>
                         <a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit Post</a>

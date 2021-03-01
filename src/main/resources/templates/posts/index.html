@@ -10,7 +10,7 @@
 
                     <div class="card-body">
                         <div th:each="post : ${posts}">
-                            <img src="img/blueberries.jpg" class="card-img-top" style="width: 10rem" alt="...">
+                            <img th:src="@{${post.uploadedFilePath}}" class="card-img-top" style="width: 10rem" alt="...">
                             <a th:text="${post.title}" th:href="@{|/posts/${post.id}|}"></a>
                             <p th:text="${post.body}"></p>
                             <hr>

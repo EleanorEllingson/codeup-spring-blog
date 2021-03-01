@@ -81,14 +81,14 @@ public class PostController {
     @Value("${file-upload-path}")
     private String uploadPath;
 
-    public String showUploadFileForm() {
-        return "fileupload";
-    }
+//    public String showUploadFileForm() {
+//        return "fileupload";
+//    }
 
     @GetMapping("/posts/create")
     public String postForm(Model model){
         model.addAttribute("post", new Post());
-        showUploadFileForm();
+
         return "posts/create";
     }
 
@@ -111,7 +111,7 @@ public class PostController {
 //    }
 
     @PostMapping("/posts/create")
-    public void saveFile(
+    public String saveFile(@ModelAttribute Post post,
             @RequestParam(name = "file") MultipartFile uploadedFile,
             Model model
     ) {
@@ -120,32 +120,41 @@ public class PostController {
         File destinationFile = new File(filepath);
         try {
             uploadedFile.transferTo(destinationFile);
+            post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+
+            post.setUploadedFilePath("/uploads/" + filename);
+            Post savedPost = postsDao.save(post);
+            String subject = "New Post Created!";
+
+            String body = "Dear " + savedPost.getUser().getUsername() + ". Thank you for creating a post. Your post id is: " + savedPost.getId();
+
+            emailService.prepareAndSend(savedPost, subject, body);
             model.addAttribute("message", "File successfully uploaded!");
         } catch (IOException e) {
             e.printStackTrace();
             model.addAttribute("message", "Oops! Something went wrong! " + e);
         }
-
-    }
-
-    public String createPost(@ModelAttribute Post post, Model model) {
-
-        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-//        post.setUser(user);
-
-
-        Post savedPost = postsDao.save(post);
-
-//        Send an email once ad is saved
-
-        String subject = "New Post Created!";
-
-        String body = "Dear " + savedPost.getUser().getUsername() + ". Thank you for creating a post. Your post id is: " + savedPost.getId();
-
-        emailService.prepareAndSend(savedPost, subject, body);
-
         return "redirect:/posts";
     }
+
+//    public String createPost(@ModelAttribute Post post, Model model) {
+//
+//        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+////        post.setUser(user);
+//
+//
+//        Post savedPost = postsDao.save(post);
+//
+////        Send an email once ad is saved
+//
+//        String subject = "New Post Created!";
+//
+//        String body = "Dear " + savedPost.getUser().getUsername() + ". Thank you for creating a post. Your post id is: " + savedPost.getId();
+//
+//        emailService.prepareAndSend(savedPost, subject, body);
+//
+//        return "redirect:/posts";
+//    }
 
 
 //    @GetMapping("/fileupload")
