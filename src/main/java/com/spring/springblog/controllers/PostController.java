@@ -6,6 +6,7 @@ import com.spring.springblog.repositories.PostRepository;
 import com.spring.springblog.repositories.UserRepository;
 import com.spring.springblog.services.EmailService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -77,25 +78,43 @@ public class PostController {
         postsDao.save(post);
         return "redirect:/posts";
     }
-
     @Value("${file-upload-path}")
     private String uploadPath;
+
+    public String showUploadFileForm() {
+        return "fileupload";
+    }
 
     @GetMapping("/posts/create")
     public String postForm(Model model){
         model.addAttribute("post", new Post());
-
-
+        showUploadFileForm();
         return "posts/create";
     }
 
+
+//    public String saveFile(
+//            @RequestParam(name = "file") MultipartFile uploadedFile,
+//            Model model
+//    ) {
+//        String filename = uploadedFile.getOriginalFilename();
+//        String filepath = Paths.get(uploadPath, filename).toString();
+//        File destinationFile = new File(filepath);
+//        try {
+//            uploadedFile.transferTo(destinationFile);
+//            model.addAttribute("message", "File successfully uploaded!");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            model.addAttribute("message", "Oops! Something went wrong! " + e);
+//        }
+//        return "fileupload";
+//    }
+
     @PostMapping("/posts/create")
-    public String createPost(@ModelAttribute Post post,  @RequestParam(name = "file") MultipartFile uploadedFile,
-                             Model model) {
-
-        User user = userDao.findAll().get(0);
-        post.setUser(user);
-
+    public void saveFile(
+            @RequestParam(name = "file") MultipartFile uploadedFile,
+            Model model
+    ) {
         String filename = uploadedFile.getOriginalFilename();
         String filepath = Paths.get(uploadPath, filename).toString();
         File destinationFile = new File(filepath);
@@ -107,6 +126,12 @@ public class PostController {
             model.addAttribute("message", "Oops! Something went wrong! " + e);
         }
 
+    }
+
+    public String createPost(@ModelAttribute Post post, Model model) {
+
+        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        post.setUser(user);
 
 
         Post savedPost = postsDao.save(post);
@@ -122,9 +147,7 @@ public class PostController {
         return "redirect:/posts";
     }
 
-//    @Value("${file-upload-path}")
-//    private String uploadPath;
-//
+
 //    @GetMapping("/fileupload")
 //    public String showUploadFileForm() {
 //        return "fileupload";
