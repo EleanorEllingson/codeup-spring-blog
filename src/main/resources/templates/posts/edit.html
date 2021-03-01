@@ -16,6 +16,11 @@
         <label for="body">Body</label>
         <input type="text" class="form-control" id="body" th:field="*{body}" th:value="*{body}">
     </div>
+    <div class="form-group">
+        <label for="body">Image</label>
+        <input type="text" class="form-control" id="image" th:field="*{uploadedFilePath}" th:value="*{uploadedFilePath}">
+    </div>
+
 
     <button type="submit" class="btn btn-primary">Submit</button>
 
