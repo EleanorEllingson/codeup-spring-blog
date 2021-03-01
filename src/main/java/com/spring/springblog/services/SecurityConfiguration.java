@@ -31,18 +31,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/posts")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/sign-up", "/ads", "/posts")
+                .antMatchers("/posts", "/sign-up")
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/ads/*", "/posts/*")
+                .antMatchers("/posts/edit/{id}", "/posts/create")
                 .authenticated();
 
     }
