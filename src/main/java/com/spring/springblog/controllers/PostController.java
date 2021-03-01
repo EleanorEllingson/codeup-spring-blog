@@ -111,7 +111,7 @@ public class PostController {
 //    }
 
     @PostMapping("/posts/create")
-    public String saveFile(
+    public void saveFile(
             @RequestParam(name = "file") MultipartFile uploadedFile,
             Model model
     ) {
@@ -125,7 +125,7 @@ public class PostController {
             e.printStackTrace();
             model.addAttribute("message", "Oops! Something went wrong! " + e);
         }
-        return "fileupload";
+
     }
 
     public String createPost(@ModelAttribute Post post, Model model) {
