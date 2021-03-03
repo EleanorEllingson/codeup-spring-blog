@@ -32,3 +32,18 @@ body {
 img.card-img-top {
     width: 25%;
 }
+
+.jumbotron{
+    background: #d5f4e6;
+}
+
+.profile-image{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    float: left;
+    margin-right: 25px;
+    border-radius: 25px;
+
+}
