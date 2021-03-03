@@ -33,17 +33,42 @@ img.card-img-top {
     width: 25%;
 }
 
+.card-home{
+    background: #d5f4e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: #618685 ;
+    border-style: solid;
+    border-width: thick;
+    padding: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .jumbotron{
     background: #d5f4e6;
+
 }
 
 .profile-image{
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
     width: 150px;
     float: left;
     margin-right: 25px;
+    margin-left: 20px;
     border-radius: 25px;
+
+}
+.card{
+    background-color: #d5f4e6;
+}
+.display-4{
+    color: #618685;
+}
+
+.lead{
+    color: #618685;
+}
+
+navbar-home{
 
 }

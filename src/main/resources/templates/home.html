@@ -2,18 +2,60 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: header-links"></head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/posts}">Blog</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    My Projects
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</nav>
 <div class="body">
 
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+        <div class="containe">
             <img class="profile-image" th:src="@{/img/Eleanor-headshot.jpg}" alt="Profile Picture" id="profileImage"/>
             <h1 class="display-4">Eleanor Ellingson</h1>
             <p class="lead">“Success is not final, failure is not fatal: it is the courage to continue that counts.” – Winston Churchill</p>
+
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card col d-flex justify-content-center" >
+                    <div class="card-home">
+                        <div class="about-me">
+                            <h2 class="home-header">About me</h2>
+                            <p>Experienced professional who makes things happen by combining the ability to see the big picture while remaining detail oriented. Through building several websites and a shopping-cart application, discovered a fascination for technical problem-solving. Seeking to expand software development skill-set and eventually combine technical and soft skills in project management.</p>
 
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
