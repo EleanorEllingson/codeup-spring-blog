@@ -25,9 +25,7 @@ body {
     background-color: #80ced6;
 }
 
-.navbar{
-    background: blue;
-}
+
 
 img.card-img-top {
     width: 25%;
@@ -56,10 +54,11 @@ img.card-img-top {
     margin-right: 25px;
     margin-left: 20px;
     border-radius: 25px;
-
+    display: block;
 }
 .card{
     background-color: #d5f4e6;
+
 }
 .display-4{
     color: #618685;
@@ -69,6 +68,10 @@ img.card-img-top {
     color: #618685;
 }
 
-navbar-home{
+.navbar{
+    background: #618685 !important;
+}
 
+.nav-link{
+    color: #fefbd8 !important;
 }
