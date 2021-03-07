@@ -27,6 +27,11 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/resume")
+    public String showResume() {
+        return "resume";
+    }
+
     @GetMapping("/login")
     public String showLoginForm() {
         return "users/login";
