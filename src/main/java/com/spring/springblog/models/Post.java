@@ -44,6 +44,12 @@ public class Post {
         this.id = id;
 
     }
+    public Post(String title, String body, long id) {
+        this.title = title;
+        this.body = body;
+        this.id = id;
+
+    }
 
     public String getTitle() {
         return title;

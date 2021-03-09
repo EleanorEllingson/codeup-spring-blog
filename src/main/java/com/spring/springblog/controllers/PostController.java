@@ -115,25 +115,30 @@ public class PostController {
             @RequestParam(name = "file") MultipartFile uploadedFile,
             Model model
     ) {
-        String filename = uploadedFile.getOriginalFilename();
-        String filepath = Paths.get(uploadPath, filename).toString();
-        File destinationFile = new File(filepath);
-        try {
-            uploadedFile.transferTo(destinationFile);
-            post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        if(uploadedFile != null) {
+            String filename = uploadedFile.getOriginalFilename();
+            String filepath = Paths.get(uploadPath, filename).toString();
+            File destinationFile = new File(filepath);
 
-            post.setUploadedFilePath("/uploads/" + filename);
-            Post savedPost = postsDao.save(post);
-            String subject = "New Post Created!";
+            try {
+                uploadedFile.transferTo(destinationFile);
 
-            String body = "Dear " + savedPost.getUser().getUsername() + ". Thank you for creating a post. Your post id is: " + savedPost.getId();
 
-            emailService.prepareAndSend(savedPost, subject, body);
-            model.addAttribute("message", "File successfully uploaded!");
-        } catch (IOException e) {
-            e.printStackTrace();
-            model.addAttribute("message", "Oops! Something went wrong! " + e);
+                post.setUploadedFilePath("/uploads/" + filename);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                model.addAttribute("message", "Oops! Something went wrong! " + e);
+            }
         }
+        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        Post savedPost = postsDao.save(post);
+        String subject = "New Post Created!";
+
+        String body = "Dear " + savedPost.getUser().getUsername() + ". Thank you for creating a post. Your post id is: " + savedPost.getId();
+
+        emailService.prepareAndSend(savedPost, subject, body);
+        model.addAttribute("message", "File successfully uploaded!");
         return "redirect:/posts";
     }
 
