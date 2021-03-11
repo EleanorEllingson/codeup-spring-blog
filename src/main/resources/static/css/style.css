@@ -78,4 +78,9 @@ img.card-img-top {
 
 .btn{
     background: #618685 !important;
+    color: #fefbd8 !important;
+}
+
+.top-buffer{
+    margin-top: 10px;
 }
