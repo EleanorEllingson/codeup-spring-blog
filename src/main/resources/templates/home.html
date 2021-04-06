@@ -24,6 +24,7 @@
                     <a class="dropdown-item" th:href="@{/posts}">Blog</a>
                     <a class="dropdown-item" href="https://eleanorellingson.github.io/coffee-project/" target="_blank">Coffee Project</a>
                     <a class="dropdown-item" href="https://eleanorellingson.github.io/weather-app/" target="_blank">Weather Map</a>
+                    <a class="dropdown-item" href="https://echovault.xyz/" target="_blank">Echo Vault</a>
 
 
                 </div>
@@ -70,7 +71,7 @@
                                 <a class="btn" data-bs-toggle="collapse" th:href="@{/posts}" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     Blog
                                 </a>
-                                <button class="btn" data-toggle="collapse" data-target="#blog">Info</button>
+                                <button class="btn" data-toggle="collapse" data-target="#blog">About</button>
 
                                 <div id="blog" class="collapse">
                                     A blogging application built with Java, MySQL, Spring Boot, Thymeleaf, Bootstrap, CSS, HTML and deployed to the web. Users can create an account. Once logged in, users can create posts, upload images, edit, and delete their blogposts.                                </div>
@@ -80,7 +81,7 @@
                                 <a class="btn" data-bs-toggle="collapse" href="https://eleanorellingson.github.io/coffee-project/" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     Coffee Project
                                 </a>
-                                <button class="btn" data-toggle="collapse" data-target="#coffee">Info</button>
+                                <button class="btn" data-toggle="collapse" data-target="#coffee">About</button>
 
                                 <div id="coffee" class="collapse">
                                 Paired-programing, JavaScript web application that allows users to navigate through the stock of a mock coffee shop. Users are able to add, edit, and delete types of coffee.</div>
@@ -91,18 +92,29 @@
                                 <a class="btn" data-bs-toggle="collapse" href="https://eleanorellingson.github.io/weather-app/" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     Weather App
                                 </a>
-                                <button class="btn" data-toggle="collapse" data-target="#weather">Info</button>
+                                <button class="btn" data-toggle="collapse" data-target="#weather">About</button>
 
                                 <div id="weather" class="collapse">
                                     A web application written with JavaScript and using jQuery to integrate two separate API’s (Open Weather Map and Mapbox) to work in conjunction to give a 5-day weather forecast and location on a map. This is completed by using AJAX requests based on user input.
                                 </div>
                             </div>
+
+                            <div class="row top-buffer">
+                                <a class="btn" data-bs-toggle="collapse" href="https://echovault.xyz/" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Echo Vault
+                                </a>
+                                <button class="btn" data-toggle="collapse" data-target="#echovault">About</button>
+
+                                <div id="echovault" class="collapse">
+                                    Echo Vault was built collaboratively by myself and four others. The website allows users to create Memorial Pages (“Echoes”) for loved ones. Users can post memories, comment on other users’ memories, and share their favorite photos of loved ones. It is a Spring Boot Web Application using the MVC design pattern to create a highly dynamic, user friendly site.
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
     <div th:replace="partials/scripts :: assets"></div>
 

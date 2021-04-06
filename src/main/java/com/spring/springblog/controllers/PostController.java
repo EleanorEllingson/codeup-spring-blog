@@ -72,18 +72,16 @@ public class PostController {
 
     @PostMapping("/posts/{id}/edit")
     public String editPost(@PathVariable long id, @ModelAttribute Post post){
-        //TODO: Change user to logged in user dynamic
-//        User user = usersDao.getOne(1L);
-//        post.setAuthor(user);
         postsDao.save(post);
         return "redirect:/posts";
     }
+
+
+
     @Value("${file-upload-path}")
     private String uploadPath;
 
-//    public String showUploadFileForm() {
-//        return "fileupload";
-//    }
+
 
     @GetMapping("/posts/create")
     public String postForm(Model model){
@@ -93,22 +91,7 @@ public class PostController {
     }
 
 
-//    public String saveFile(
-//            @RequestParam(name = "file") MultipartFile uploadedFile,
-//            Model model
-//    ) {
-//        String filename = uploadedFile.getOriginalFilename();
-//        String filepath = Paths.get(uploadPath, filename).toString();
-//        File destinationFile = new File(filepath);
-//        try {
-//            uploadedFile.transferTo(destinationFile);
-//            model.addAttribute("message", "File successfully uploaded!");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            model.addAttribute("message", "Oops! Something went wrong! " + e);
-//        }
-//        return "fileupload";
-//    }
+
 
     @PostMapping("/posts/create")
     public String saveFile(@ModelAttribute Post post,
@@ -142,62 +125,7 @@ public class PostController {
         return "redirect:/posts";
     }
 
-//    public String createPost(@ModelAttribute Post post, Model model) {
-//
-//        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-////        post.setUser(user);
-//
-//
-//        Post savedPost = postsDao.save(post);
-//
-////        Send an email once ad is saved
-//
-//        String subject = "New Post Created!";
-//
-//        String body = "Dear " + savedPost.getUser().getUsername() + ". Thank you for creating a post. Your post id is: " + savedPost.getId();
-//
-//        emailService.prepareAndSend(savedPost, subject, body);
-//
-//        return "redirect:/posts";
-//    }
 
-
-//    @GetMapping("/fileupload")
-//    public String showUploadFileForm() {
-//        return "fileupload";
-//    }
-//
-//    @PostMapping("/fileupload")
-//    public String saveFile(
-//            @RequestParam(name = "file") MultipartFile uploadedFile,
-//            Model model
-//    ) {
-//        String filename = uploadedFile.getOriginalFilename();
-//        String filepath = Paths.get(uploadPath, filename).toString();
-//        File destinationFile = new File(filepath);
-//        try {
-//            uploadedFile.transferTo(destinationFile);
-//            model.addAttribute("message", "File successfully uploaded!");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            model.addAttribute("message", "Oops! Something went wrong! " + e);
-//        }
-//        return "posts/create";
-//    }
-
-//    @PostMapping("/posts/update")
-
-//    @GetMapping("/posts/search")
-//    @ResponseBody
-//    public Post returnPostByTitle() {
-//        return postsDao.findByTitle("First Post");
-//    }
-//
-//    @GetMapping("/posts/order")
-//    @ResponseBody
-//    public List<Post> returnPostsByTitle() {
-//        return postsDao.findByOrderByTitle();
-//    }
 
 
 }

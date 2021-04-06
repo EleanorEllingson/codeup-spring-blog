@@ -82,6 +82,7 @@ img.card-img-top {
 .btn{
     background: #618685 !important;
     color: #fefbd8 !important;
+    margin: 5px;
 }
 
 .top-buffer{
