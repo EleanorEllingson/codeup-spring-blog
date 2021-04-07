@@ -21,10 +21,11 @@
                     My Projects
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://echovault.xyz/" target="_blank">Echo Vault</a>
                     <a class="dropdown-item" th:href="@{/posts}">Blog</a>
                     <a class="dropdown-item" href="https://eleanorellingson.github.io/coffee-project/" target="_blank">Coffee Project</a>
                     <a class="dropdown-item" href="https://eleanorellingson.github.io/weather-app/" target="_blank">Weather Map</a>
-                    <a class="dropdown-item" href="https://echovault.xyz/" target="_blank">Echo Vault</a>
+
 
 
                 </div>
@@ -67,6 +68,16 @@
                             <h2 class="home-header">My Skills</h2>
                             Java SE &bull; MySQL &bull; Spring &bull; Thymeleaf &bull; Object-Oriented Programming &bull; Java EE (Servlets, JSP) &bull; HTML &bull; CSS &bull; JavaScript &bull; BootStrap &bull; jQuery &bull; Paired Programming &bull; VCS with Git &bull; Test-Driven Development
                             <h2 class="home-header top-buffer">My Projects</h2>
+                            <div class="row top-buffer">
+                                <a class="btn" data-bs-toggle="collapse" href="https://echovault.xyz/" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Echo Vault
+                                </a>
+                                <button class="btn" data-toggle="collapse" data-target="#echovault">About</button>
+
+                                <div id="echovault" class="collapse">
+                                    Echo Vault was built collaboratively by myself and four others. The website allows users to create Memorial Pages (“Echoes”) for loved ones. Users can post memories, comment on other users’ memories, and share their favorite photos of loved ones. It is a Spring Boot Web Application using the MVC design pattern to create a highly dynamic, user friendly site.
+                                </div>
+                            </div>
                             <div class="row">
                                 <a class="btn" data-bs-toggle="collapse" th:href="@{/posts}" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     Blog
@@ -99,16 +110,7 @@
                                 </div>
                             </div>
 
-                            <div class="row top-buffer">
-                                <a class="btn" data-bs-toggle="collapse" href="https://echovault.xyz/" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    Echo Vault
-                                </a>
-                                <button class="btn" data-toggle="collapse" data-target="#echovault">About</button>
 
-                                <div id="echovault" class="collapse">
-                                    Echo Vault was built collaboratively by myself and four others. The website allows users to create Memorial Pages (“Echoes”) for loved ones. Users can post memories, comment on other users’ memories, and share their favorite photos of loved ones. It is a Spring Boot Web Application using the MVC design pattern to create a highly dynamic, user friendly site.
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
